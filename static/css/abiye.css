@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.yeni-yapi {
+    display: flex;
+    align-items: center;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.product-info {
+    margin-bottom: 10px;
+}
+
+.product-name {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.price {
+    font-size: 1rem;
+    color: #777;
+}
+
+.actions {
+    display: flex;
+}
+
+.actions button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.fav-btn {
+    color: #B197FC;
+}
+
+.cart-btn {
+    color: #74C0FC;
+}
+
+.delete-btn {
+    color: #63E6BE;
+}
