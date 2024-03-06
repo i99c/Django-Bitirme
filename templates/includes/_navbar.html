@@ -63,10 +63,10 @@
           </ul>
         </div>
         <div class="navbar-nav ms-auto">
-          <a class="nav-link" ><i class="fa-solid fa-user" style="color: #333;"></i></a>
+          <a href="{% url 'login' %}" class="nav-link"><i class="fa-solid fa-user" style="color: #333;"></i></a>
           <a class="nav-link" href="#"><i class="fa-brands fa-shopify w-50" style="color: #333;"></i></a>
           <a class="nav-link" href="favoriler.html"><i class="fa-solid fa-heart" style="color: #333;"></i></a>
-          <a href={% url "register" %}><button class="btn btn-dark">Kayıt Ol</button></a>
+          <a href="{% url 'register' %}" class="btn btn-dark">Kayıt Ol</a>
         </div>
       </div>
     </div>
