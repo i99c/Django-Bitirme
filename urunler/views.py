@@ -37,3 +37,6 @@ def eayakkabi(request):
 
 def etmmurun(request):
     return render(request, "etmmurun.html")
+
+def anasayfa(request):
+    return render(request, "index.html")
