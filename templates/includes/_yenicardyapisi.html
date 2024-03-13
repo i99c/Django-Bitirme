@@ -1,0 +1,25 @@
+<!-- sepet.html -->
+{% block content %}
+  <div class="container">
+    <div class="row">
+      {% for urun in sepet_urunler %}
+        <div class="col-md-4">
+          <div class="sepet-urun">
+            <img class="img" src="{{ urun.image_url }}" alt="Ürün Görseli" />
+            <div class="content">
+              <div class="product-info">
+                <h2 class="product-name">{{ urun.name }}</h2>
+                <h4 class="price">{{ urun.price }}</h4>
+              </div>
+              <hr />
+              <div class="actions">
+                <button class="remove-btn"><i class="fa-solid fa-trash" style="color: #63E6BE;"></i></button>
+                <input type="number" class="quantity-input" value="{{ urun.quantity }}" />
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

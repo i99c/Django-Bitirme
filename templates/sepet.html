@@ -3,7 +3,7 @@
 {% include 'includes/_navbar.html' %}
 <link rel="stylesheet" href="{% static 'css/abiye.css' %}" />
 {% block content %}
-  {% for eayakkabi in eayakkabilar %}
-    {% include 'includes/_erkekayakkabi.html' %}
+  {% for urun in sepet_urunler %}
+    {% include 'includes/_yenicardyapisi.html' %}
   {% endfor %}
 {% endblock %}

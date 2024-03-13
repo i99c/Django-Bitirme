@@ -16,7 +16,7 @@ def abiye(request):
 
 def kadinAyakkabi(request):
     ayakkabi_urunler = Product.objects.filter(category__name='Kadın Ayakkabı')
-    return render(request, "kayakkabi.html", {'urunler': ayakkabi_urunler})
+    return render(request, "kayakkabi.html", {'ayakkabilar': ayakkabi_urunler})
 
 def kozmetik(request):
     kozmetik_urunler = Product.objects.filter(category__name='Kozmetik')
@@ -33,23 +33,51 @@ def taki(request):
     return render(request, "taki.html", {'products': taki_urunler})
 
 def gomlek(request):
-    return render(request, "gomlek.html")
+
+    gomlek_urunler = Product.objects.filter(category__name='Gömlek')
+
+    return render(request, "gomlek.html", {'erkekurunler': gomlek_urunler})
 
 def takim(request):
-    return render(request, "takim.html")
+
+    takim_urunler = Product.objects.filter(category__name='Takım')
+
+    return render(request, "takim.html",{'erkekurunler': takim_urunler})
 
 def ceket(request):
-    return render(request, "ceket.html")
+
+    ceket_urunler = Product.objects.filter(category__name='Ceket')
+
+    return render(request, "ceket.html",{'erkekurunler': ceket_urunler})
 
 def yelek(request):
-    return render(request, "yelek.html")
+
+    yelek_urunler = Product.objects.filter(category__name='Yelek')
+
+    return render(request, "yelek.html",{'erkekurunler':yelek_urunler})
 
 def eayakkabi(request):
-    return render(request, "eayakkabi.html")
+
+    eayakkabi_urunler = Product.objects.filter(category__name='Erkek Ayakkabı')
+
+    return render(request, "eayakkabi.html",{'eayakkabilar':eayakkabi_urunler})
 
 def etmmurun(request):
-    return render(request, "etmmurun.html")
+
+    etamamlayici_urunler = Product.objects.filter(category__name='Tamamlayıcı Ürünler (Erkek)')
+
+    return render(request, "etmmurun.html",{'products':etamamlayici_urunler})
+
+def sepet(request):
+
+    tum_urunler = Product.objects.all()
+
+
+    return render (request, "sepet.html", {'sepet_urunler' :tum_urunler})
 
 def anasayfa(request):
-    return render(request, "index.html")
+
+    return render(request, 'anasayfa.html')
+
+
 

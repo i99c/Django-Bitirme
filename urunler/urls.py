@@ -14,5 +14,7 @@ urlpatterns = [
     path('yelek/', yelek, name='yelek'),
     path('erkek-ayakkabi/', eayakkabi, name='eayakkabi'),
     path('erkek-tamamlayici/', etmmurun, name='etmmurun'),
+    path('sepet/', sepet, name='sepet'),
+    path('anasayfa/', anasayfa, name='anasayfa'),
    
 ]

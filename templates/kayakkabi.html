@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/abiye.css' %}" />
 
 {% block content %}
-  {% for urun in urunler %}
-    {% include 'includes/_urunyapisi.html' %}
+  {% for ayakkabi in ayakkabilar %}
+    {% include 'includes/_kadinayakkabi.html' %}
   {% endfor %}
 {% endblock %}

@@ -1,0 +1,33 @@
+{% block content %}
+  <div class="container">
+    <div class="row">
+      {% for erkekurun in erkekurunler %}
+        <div class="col-md-4">
+          <div class="yeni-yapi">
+            <img class="img" src="{{ erkekurun.image_url }}" alt="Ürün Görseli" />
+            <div class="content">
+              <div class="product-info">
+                <h2 class="product-name">{{ erkekurun.name }}</h2>
+                <h4 class="price">{{ erkekurun.price }}</h4>
+              </div>
+              <hr />
+              <div class="actions">
+                <button class="fav-btn"><i class="fa-solid fa-heart" style="color: #B197FC;"></i></button>
+                <button class="cart-btn"><i class="fa-solid fa-cart-shopping" style="color: #74C0FC;"></i></button>
+                <button class="delete-btn"><i class="fa-solid fa-trash" style="color: #63E6BE;"></i></button>
+              </div>
+              <hr />
+              <div>
+                <button class="btn btn-dark mt-2">S</button>
+                <button class="btn btn-dark mt-2">M</button>
+                <button class="btn btn-dark mt-2">L</button>
+                <button class="btn btn-dark mt-2">XL</button>
+                <button class="btn btn-dark mt-2">XXL</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
