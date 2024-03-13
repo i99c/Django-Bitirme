@@ -1,1 +1,10 @@
+{% extends 'index.html' %}
 {% load static %}
+{% include 'includes/_navbar.html' %}
+<link rel="stylesheet" href="{% static 'css/abiye.css' %}" />
+
+{% block content %}
+  {% for urun in urunler %}
+    {% include 'includes/_urunyapisi.html' %}
+  {% endfor %}
+{% endblock %}

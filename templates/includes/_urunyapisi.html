@@ -1,0 +1,38 @@
+{% block content %}
+  <div class="container">
+    <div class="row">
+      {% for urun in urunler %}
+        <div class="col-md-4">
+          <div class="yeni-yapi">
+            <img class="img" src="{{ urun.image_url }}" alt="Ürün Görseli" />
+            <div class="content">
+              <div class="product-info">
+                <h2 class="product-name">{{ urun.name }}</h2>
+                <h4 class="price">{{ urun.price }}</h4>
+              </div>
+              <hr />
+              <div class="actions">
+                <button class="fav-btn"><i class="fa-solid fa-heart" style="color: #B197FC;"></i></button>
+                <button class="cart-btn"><i class="fa-solid fa-cart-shopping" style="color: #74C0FC;"></i></button>
+                <button class="delete-btn"><i class="fa-solid fa-trash" style="color: #63E6BE;"></i></button>
+              </div>
+              <hr />
+              <div>
+                <button class="btn btn-dark mt-2">36</button>
+                <button class="btn btn-dark mt-2">37</button>
+                <button class="btn btn-dark mt-2">38</button>
+                <button class="btn btn-dark mt-2">39</button>
+                <button class="btn btn-dark mt-2">40</button>
+                <button class="btn btn-dark mt-2">41</button>
+                <button class="btn btn-dark mt-2">42</button>
+                <button class="btn btn-dark mt-2">43</button>
+                <button class="btn btn-dark mt-2">44</button>
+                <button class="btn btn-dark mt-2">45</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
