@@ -17,12 +17,12 @@
                 <button class="delete-btn"><i class="fa-solid fa-trash" style="color: #63E6BE;"></i></button>
               </div>
               <hr />
-              <div>
-                <button class="btn btn-dark mt-2">S</button>
-                <button class="btn btn-dark mt-2">M</button>
-                <button class="btn btn-dark mt-2">L</button>
-                <button class="btn btn-dark mt-2">XL</button>
-                <button class="btn btn-dark mt-2">XXL</button>
+              <div class="size-option">
+                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ ayakkabi.name }}, {{ ayakkabi.price }},{{ urun.image_url }}, 'S')">S</button>
+                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ ayakkabi.name }}, {{ ayakkabi.price }},{{ urun.image_url }}, 'M')">M</button>
+                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ ayakkabi.name }}, {{ ayakkabi.price }},{{ urun.image_url }}, 'L')">L</button>
+                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ ayakkabi.name }}, {{ ayakkabi.price }},{{ urun.image_url }}, 'XL')">XL</button>
+                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ ayakkabi.name }}, {{ ayakkabi.price }},{{ urun.image_url }}, 'XXL')">XXL</button>
               </div>
             </div>
           </div>
