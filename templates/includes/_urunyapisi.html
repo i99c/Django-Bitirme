@@ -1,3 +1,6 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/abiye.css' %}" />
+
 {% block content %}
   <div class="container">
     <div class="row">
@@ -12,9 +15,7 @@
               </div>
               <hr />
               <div class="actions">
-                <button class="fav-btn"><i class="fa-solid fa-heart" style="color: #B197FC;"></i></button>
-                <button class="cart-btn"><i class="fa-solid fa-cart-shopping" style="color: #74C0FC;"></i></button>
-                <button class="delete-btn"><i class="fa-solid fa-trash" style="color: #63E6BE;"></i></button>
+                <button id="kalp" class="fav-btn"><i class="fa-solid fa-heart" onclick="fa-solid fa-heart" style="color: #B197FC;"></i></button>
               </div>
               <hr />
               <div class="size-option">

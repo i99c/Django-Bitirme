@@ -3,7 +3,5 @@
 {% include 'includes/_navbar.html' %}
 <link rel="stylesheet" href="{% static 'css/abiye.css' %}" />
 {% block content %}
-  {% for product in products %}
-    {% include 'includes/_yeniyapi.html' %}
-  {% endfor %}
+  {% include 'includes/_yeniyapi.html' %}
 {% endblock %}

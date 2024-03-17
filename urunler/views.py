@@ -79,5 +79,6 @@ def anasayfa(request):
 
     return render(request, 'anasayfa.html')
 
-
+def favoriler(request):
+    return render(request, 'favoriler.html')
 

@@ -3,7 +3,5 @@
 {% include 'includes/_navbar.html' %}
 <link rel="stylesheet" href="{% static 'css/abiye.css' %}" />
 {% block content %}
-  {% for erkekurun in erkekurunler %}
-    {% include 'includes/_erkekurunleri.html' %}
-  {% endfor %}
+  {% include 'includes/_erkekurunleri.html' %}
 {% endblock %}

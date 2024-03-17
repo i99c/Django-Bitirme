@@ -1,13 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Favoriler</title>
-        <link rel="stylesheet" href="favoriler.css">
-    </head>
-    <body>
+<!-- templates/favorites.html -->
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+  <div class="container">
+    <h1>Favoriler</h1>
+    <form id="addFavoriteForm" method="POST">
+      {% csrf_token %}
+      <div class="form-group"></div>
+    </form>
+    <hr />
+    <ul id="favoriteList" class="list-group">
+      {% for favorite in favorites %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{ favorite.item }}
+          <span><button type="button" class="btn btn-outline-danger btn-sm delete-favorite" data-id="{{ favorite.id }}"><i class="fas fa-trash"></i></button></span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
 
-        <script src={% static "favoriler.js" %}></script>
-    </body>
-</html>
+{% block content1 %}
+  <div class="container">
+    <div class="row">
+      {% for urun in urunler %}
+        <div class="col-md-4">
+          <div class="yeni-yapi">
+            <img class="img" src="{{ urun.image_url }}" alt="Ürün Görseli" />
+            <div class="content">
+              <div class="product-info">
+                <h2 class="product-name">{{ urun.name }}</h2>
+                <h4 class="price">{{ urun.price }}</h4>
+              </div>
+              <hr />
+              <div class="actions">
+                <button class="fav-btn" onclick="toggleFormGroup(this)"><i class="fa-solid fa-heart" style="color: #B197FC;"></i></button>
+                <button class="cart-btn"><i class="fa-solid fa-cart-shopping" style="color: #74C0FC;"></i></button>
+                <button class="delete-btn"><i class="fa-solid fa-trash" style="color: #63E6BE;"></i></button>
+              </div>
+              <hr />
+              <div class="size-option">
+                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ ayakkabi.name }}, {{ ayakkabi.price }},{{ urun.image_url }}, 'S')">S</button>
+                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ ayakkabi.name }}, {{ ayakkabi.price }},{{ urun.image_url }}, 'M')">M</button>
+                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ ayakkabi.name }}, {{ ayakkabi.price }},{{ urun.image_url }}, 'L')">L</button>
+                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ ayakkabi.name }}, {{ ayakkabi.price }},{{ urun.image_url }}, 'XL')">XL</button>
+                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ ayakkabi.name }}, {{ ayakkabi.price }},{{ urun.image_url }}, 'XXL')">XXL</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+<script>
+  function toggleFormGroup(button) {
+    var formGroup = button.closest('.container').querySelector('.form-group')
+    formGroup.classList.toggle('active')
+  }
+</script>

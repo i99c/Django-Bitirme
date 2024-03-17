@@ -16,5 +16,6 @@ urlpatterns = [
     path('erkek-tamamlayici/', etmmurun, name='etmmurun'),
     path('sepet/', sepet, name='sepet'),
     path('anasayfa/', anasayfa, name='anasayfa'),
+    path('favoriler/', favoriler, name='favoriler'),
    
 ]

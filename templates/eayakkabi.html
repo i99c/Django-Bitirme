@@ -3,7 +3,5 @@
 {% include 'includes/_navbar.html' %}
 <link rel="stylesheet" href="{% static 'css/abiye.css' %}" />
 {% block content %}
-  {% for eayakkabi in eayakkabilar %}
-    {% include 'includes/_erkekayakkabi.html' %}
-  {% endfor %}
+  {% include 'includes/_erkekayakkabi.html' %}
 {% endblock %}
