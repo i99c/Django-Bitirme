@@ -80,5 +80,8 @@ def anasayfa(request):
     return render(request, 'anasayfa.html')
 
 def favoriler(request):
-    return render(request, 'favoriler.html')
+
+    fav_urunler = Product.objects.all()
+    
+    return render(request, 'favoriler.html', {'favorites' :fav_urunler })
 
