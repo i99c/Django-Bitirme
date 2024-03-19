@@ -5,9 +5,9 @@
   <div class="container">
     <div class="row">
       {% for urun in urunler %}
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="yeni-yapi">
-            <img class="img" src="{{ urun.image_url }}" alt="Ürün Görseli" />
+            <img class="img w-0" src="{{ urun.image_url }}" alt="Ürün Görseli" style="width: 100%; height: auto; max-width: 550px; max-height: 550px;" />
             <div class="content">
               <div class="product-info">
                 <h2 class="product-name">{{ urun.name }}</h2>

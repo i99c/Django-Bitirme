@@ -17,5 +17,6 @@ urlpatterns = [
     path('sepet/', sepet, name='sepet'),
     path('anasayfa/', anasayfa, name='anasayfa'),
     path('favoriler/', favoriler, name='favoriler'),
+    path('smokin/',smokin,name='smokin'),
    
 ]

@@ -19,9 +19,8 @@
 }
 
 .img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
+    width: 300px;
+    height: 300px;
 }
 
 .content {
@@ -55,7 +54,7 @@
 }
 
 .fav-btn {
-    color: #B197FC;
+    color: #4627a3;
 }
 
 .cart-btn {

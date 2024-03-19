@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       {% for product in products %}
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="yeni-yapi">
-            <img class="img" src="{{ product.image_url }}" alt="Ürün Görseli" />
+            <img class="img" src="{{ product.image_url }}" alt="Ürün Görseli" style="width: 100%; height: auto; max-width: 450px; max-height: 450px;" />
             <div class="content">
               <div class="product-info">
                 <h2 class="product-name">{{ product.name }}</h2>
