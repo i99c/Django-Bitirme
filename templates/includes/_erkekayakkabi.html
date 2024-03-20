@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row">
       {% for eayakkabi in eayakkabilar %}
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="yeni-yapi">
-            <img class="img" src="{{ eayakkabi.image_url }}" alt="Ürün Görseli" />
+            <img class="img" style="width: 100%; height: auto; max-width: 550px; max-height: 550px;" src="{{ eayakkabi.image_url }}" alt="Ürün Görseli" />
             <div class="content">
               <div class="product-info">
                 <h2 class="product-name">{{ eayakkabi.name }}</h2>
-                <h4 class="price">{{ eayakkabi.price }}</h4>
+                <h4 class="price">{{ eayakkabi.price }}₺</h4>
               </div>
               <hr />
               <div class="actions">

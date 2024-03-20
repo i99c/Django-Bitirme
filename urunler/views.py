@@ -86,4 +86,10 @@ def favoriler(request):
     return render(request, 'favoriler.html')
 
 def smokin(request):
-    return render(request, 'smokin.html') 
+
+    smokin_urunler = Product.objects.filter(category__name='Smokin')
+
+    return render(request, 'smokin.html', {'erkekurunler':smokin_urunler}) 
+
+def kadinkategori(request):
+    return render(request, 'kadın-kategori.html')

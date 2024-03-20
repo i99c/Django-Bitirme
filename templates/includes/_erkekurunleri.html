@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row">
       {% for erkekurun in erkekurunler %}
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="yeni-yapi">
-            <img class="img" src="{{ erkekurun.image_url }}" alt="Ürün Görseli" />
+            <img class="img" style="width: 100%; height: auto; max-width: 550px; max-height: 550px;" src="{{ erkekurun.image_url }}" alt="Ürün Görseli" />
             <div class="content">
               <div class="product-info">
                 <h2 class="product-name">{{ erkekurun.name }}</h2>
-                <h4 class="price">{{ erkekurun.price }}</h4>
+                <h4 class="price">{{ erkekurun.price }}₺</h4>
               </div>
               <hr />
               <div class="actions">
