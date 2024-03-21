@@ -1,4 +1,5 @@
 <!-- templates/favorites.html -->
+
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
@@ -15,10 +16,12 @@
           {{ favorite.item }}
           <span>
             <!-- Favori silme butonu -->
-            <button type="button" class="btn btn-outline-danger btn-sm delete-favorite" data-id="{{ favorite.id }}"><i class="fas fa-trash"></i></button>
+            <button type="button" class="btn btn-outline-danger btn-sm delete-favorite" data-id="{{ favorite.id }}" onclick="deleteFavorite({{ favorite.id }})"><i class="fas fa-trash"></i></button>
           </span>
         </li>
       {% endfor %}
     </ul>
   </div>
 {% endblock %}
+
+<script src="{% static 'js/favoriler.js' %}"></script>

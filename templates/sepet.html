@@ -7,9 +7,11 @@
   <!-- Boş sepet gösterimi -->
   <div class="container">
     <div class="row">
-      <div class="col-md-12" id="basket-container">
-        <h3>Sepetinizde ürün bulunmamaktadır.</h3>
-      </div>
+      {% for sepet in sepets %}
+        <div class="col-md-12" id="basket-container">
+          <h3>Sepetinizde ürün bulunmamaktadır.</h3>
+        </div>
+      {% endfor %}
     </div>
   </div>
 {% endblock %}
@@ -38,35 +40,3 @@
     </div>
   </div>
 {% endblock %}
-
-<script>
-  function addToCart(name, price, image_url) {
-    // Sepete ekleme işlemleri burada gerçekleştirilecek
-    // Örnek olarak, sepete eklenen ürünün bilgilerini konsola yazdırabiliriz
-    console.log("Sepete eklenen ürün:", name, price, image_url);
-
-    // Burada sepete eklenen ürünün HTML temsilini oluşturabiliriz
-    var productHTML = `
-      <div class="col-md-4">
-        <div class="sepet-urun">
-          <img class="img" src="${image_url}" alt="Ürün Görseli" />
-          <div class="content">
-            <div class="product-info">
-              <h2 class="product-name">${name}</h2>
-              <h4 class="price">${price}</h4>
-            </div>
-            <hr />
-            <div class="actions">
-              <button class="remove-btn"><i class="fa-solid fa-trash" style="color: #63E6BE;"></i></button>
-              <input type="number" class="quantity-input" value="1" />
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    // Oluşturulan HTML'i sepet bölümüne ekleyelim
-    var basketContainer = document.getElementById("basket-container");
-    basketContainer.innerHTML += productHTML;
-  }
-</script>

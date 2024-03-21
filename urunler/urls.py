@@ -18,6 +18,5 @@ urlpatterns = [
     path('anasayfa/', anasayfa, name='anasayfa'),
     path('favoriler/', favoriler, name='favoriler'),
     path('smokin/',smokin,name='smokin'),
-    path('kadin-kategori',kadinkategori, name='kadin-kategori')
    
 ]

@@ -81,9 +81,9 @@ def anasayfa(request):
 
 def favoriler(request):
 
-    # fav_urunler = Product.objects.all()
+    fav_urunler = Product.objects.all()
     
-    return render(request, 'favoriler.html')
+    return render(request, 'favoriler.html', {'favorites':fav_urunler })
 
 def smokin(request):
 
@@ -93,3 +93,4 @@ def smokin(request):
 
 def kadinkategori(request):
     return render(request, 'kadın-kategori.html')
+
