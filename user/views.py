@@ -41,3 +41,7 @@ def userLogin(request):
     return render(request, "login.html")
 
 
+def userLogout(request):
+    logout(request)
+    messages.success(request, 'Başarıyla Çıkış Yapıldı')
+    return redirect('index')
