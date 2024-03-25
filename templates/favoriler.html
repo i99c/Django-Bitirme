@@ -1,27 +1,22 @@
-<!-- templates/favorites.html -->
-
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
   <div class="container">
     <h1>Favoriler</h1>
-    <form id="addFavoriteForm" method="POST">
-      {% csrf_token %}
-      <div class="form-group"></div>
-    </form>
-    <hr />
-    <ul id="favoriteList" class="list-group">
-      {% for favorite in favorites %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          {{ favorite.item }}
-          <span>
-            <!-- Favori silme butonu -->
-            <button type="button" class="btn btn-outline-danger btn-sm delete-favorite" data-id="{{ favorite.id }}" onclick="deleteFavorite({{ favorite.id }})"><i class="fas fa-trash"></i></button>
-          </span>
-        </li>
-      {% endfor %}
-    </ul>
+    {% if favorites %}
+      <ul id="favoriteList" class="list-group">
+        {% for favorite in favorites %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ favorite.product.name }}
+            <span>
+              <!-- Favori silme butonu -->
+              <button type="button" class="btn btn-outline-danger btn-sm delete-favorite" data-id="{{ favorite.id }}" onclick="deleteFavorite({{ favorite.id }})"><i class="fas fa-trash"></i></button>
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Favori listeniz boş.</p>
+    {% endif %}
   </div>
 {% endblock %}
-
-<script src="{% static 'js/favoriler.js' %}"></script>

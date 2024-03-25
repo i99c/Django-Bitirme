@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import *
-
+from django.shortcuts import redirect
+from .models import FavoriteItem
+from .models import SepetItem
 # Create your views here.
 def index(request):
 
@@ -94,3 +96,18 @@ def smokin(request):
 def kadinkategori(request):
     return render(request, 'kadın-kategori.html')
 
+
+
+def add_to_favorites(request, urun_id):
+    urun = Product.objects.get(id=urun_id)
+    FavoriteItem.objects.create(user=request.user, product=urun)
+    return redirect('urunler')
+
+
+def add_to_cart(request):
+    urun_adi = request.POST.get('urun_adi')
+    urun_fiyati = request.POST.get('urun_fiyati')
+    urun_resmi = request.POST.get('urun_resmi')
+    beden = request.POST.get('beden')
+    SepetItem.objects.create(user=request.user, product_name=urun_adi, product_price=urun_fiyati, product_image=urun_resmi, size=beden)
+    return redirect('sepet')
