@@ -1,5 +1,6 @@
-Proje Canlı Link:  ipek.pythonanywhere.com
-
+Proje Canlı Link:  
+[ipek.pythonanywhere.com
+](https://ipek.pythonanywhere.com/)
 
 
 Proje Ana Sayfa Görüntüsü
