@@ -58,17 +58,17 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Hakkımızda</a>
+              <a class="nav-link" href="{% url 'hakkimizda' %}">Hakkımızda</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">İletişim</a>
+              <a class="nav-link" href="{% url 'iletisim' %}">İletişim</a>
             </li>
           </ul>
         </div>
         <div class="navbar-nav ms-auto">
           <a href="{% url 'login' %}" class="nav-link"><i class="fa-solid fa-user" style="color: #333;"></i></a>
           <a class="nav-link" href="{% url 'sepet' %}"><i class="fa-brands fa-shopify w-50" style="color: #333;"></i></a>
-          <a class="nav-link" href="{% url 'favoriler' %}"><i class="fa-solid fa-heart" style="color: #333;"></i></a>
+
           <a href="{% url 'register' %}" class="btn btn-dark me-2">Kayıt Ol</a>
           <a href="{% url 'login' %}" class="btn btn-success me-2">Üye Girişi</a>
           <a href="{% url 'index' %}" class="btn btn-danger">Çıkış Yap</a>

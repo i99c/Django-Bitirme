@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
@@ -18,20 +19,23 @@ class Product(models.Model):
         return self.name
 
 
-class FavoriteItem(models.Model):
+
+class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.product.name}"
+        return f"Cart - {self.user.username}"
 
-
-class SepetItem(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    size = models.CharField(max_length=10)
-    created_at = models.DateTimeField(auto_now_add=True)
+    quantity = models.PositiveIntegerField(default=1)
+    size = models.CharField(max_length=10)  # Beden alanı eklendi
+    added_at = models.DateTimeField(auto_now_add=True)
+
+
+    
 
     def __str__(self):
-        return f"{self.user.username} - {self.product.name} - {self.size}"
+        return f"{self.product.name} - {self.quantity}"

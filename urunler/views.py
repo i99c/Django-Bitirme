@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
-from django.shortcuts import redirect
-from .models import FavoriteItem
-from .models import SepetItem
+from urunler.models import CartItem
+from django.shortcuts import redirect, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 # Create your views here.
 def index(request):
 
@@ -22,17 +24,17 @@ def kadinAyakkabi(request):
 
 def kozmetik(request):
     kozmetik_urunler = Product.objects.filter(category__name='Kozmetik')
-    return render(request, "kozmetik.html", {'products': kozmetik_urunler})
+    return render(request, "kozmetik.html", {'kozmetiks': kozmetik_urunler})
 
 def tamamlayici(request):
 
     tamamlayici_urunler = Product.objects.filter(category__name='Tamamlayıcı Ürünler (Kadın)')
 
-    return render(request, "ktmmurun.html", {'products': tamamlayici_urunler})
+    return render(request, "ktmmurun.html", {'kozmetiks': tamamlayici_urunler})
 
 def taki(request):
     taki_urunler = Product.objects.filter(category__name='Takı')
-    return render(request, "taki.html", {'products': taki_urunler})
+    return render(request, "taki.html", {'kozmetiks': taki_urunler})
 
 def gomlek(request):
 
@@ -68,14 +70,12 @@ def etmmurun(request):
 
     etamamlayici_urunler = Product.objects.filter(category__name='Tamamlayıcı Ürünler (Erkek)')
 
-    return render(request, "etmmurun.html",{'products':etamamlayici_urunler})
+    return render(request, "etmmurun.html",{'kozmetiks':etamamlayici_urunler})
 
 def sepet(request):
+    sepet_urunler = CartItem.objects.filter(cart__user=request.user)
 
-    tum_urunler = Product.objects.all()
-
-
-    return render (request, "sepet.html", {'sepet_urunler' :tum_urunler})
+    return render(request, "sepet.html", {'sepet_urunler': sepet_urunler})
 
 def anasayfa(request):
 
@@ -98,16 +98,67 @@ def kadinkategori(request):
 
 
 
-def add_to_favorites(request, urun_id):
-    urun = Product.objects.get(id=urun_id)
-    FavoriteItem.objects.create(user=request.user, product=urun)
-    return redirect('urunler')
-
 
 def add_to_cart(request):
-    urun_adi = request.POST.get('urun_adi')
-    urun_fiyati = request.POST.get('urun_fiyati')
-    urun_resmi = request.POST.get('urun_resmi')
-    beden = request.POST.get('beden')
-    SepetItem.objects.create(user=request.user, product_name=urun_adi, product_price=urun_fiyati, product_image=urun_resmi, size=beden)
+    if request.method == 'POST':
+        urun_adi = request.POST['urun_adi']
+        urun_fiyati = request.POST['urun_fiyati']
+        urun_resmi = request.POST['urun_resmi']
+        beden = request.POST['beden']
+
+        # Ürünü alın veya yeni birini oluşturun
+        product, created = Product.objects.get_or_create(
+            name=urun_adi,
+            defaults={'price': urun_fiyati, 'image_url': urun_resmi}
+        )
+
+        # Yeni bir Cart oluşturun veya mevcut birini alın
+        cart, created = Cart.objects.get_or_create(user=request.user)
+
+        # Mevcut bir CartItem varsa miktarını güncelleyin, yoksa yeni birini oluşturun
+        cart_item, created = CartItem.objects.get_or_create(
+            cart=cart,
+            product=product,
+            size=beden,
+            defaults={'quantity': 1}
+        )
+        if not created:
+            cart_item.quantity += 1
+            cart_item.save()
+
+        return redirect('sepet')
+
+    return redirect('index')
+
+
+    
+def sepet(request):
+    sepet_urunler = CartItem.objects.filter(cart__user=request.user)
+
+    return render(request, "sepet.html", {'sepet_urunler': sepet_urunler})
+
+def sepet_sil(request, cart_item_id):
+    cart_item = get_object_or_404(CartItem, id=cart_item_id)
+    cart_item.delete()
     return redirect('sepet')
+
+def hakkimizda(request):
+    return render(request, 'hakkimizda.html')
+
+def iletisim(request):
+    return render(request, "iletisim.html")
+
+def send_message(request):
+    if request.method == 'POST':
+        # Formdan gelen verileri al
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        
+        # Burada mesajı işleyebilirsiniz, örneğin bir e-posta gönderebilirsiniz
+        
+        # İletişim formunun gönderildiği sayfaya yeniden yönlendirme
+        return HttpResponseRedirect(reverse('iletisim'))
+    else:
+        # POST dışındaki herhangi bir istekte sayfaya geri dönme
+        return HttpResponseRedirect(reverse('iletisim'))

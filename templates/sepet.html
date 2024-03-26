@@ -1,42 +1,50 @@
 {% extends 'index.html' %}
 {% load static %}
+{% load humanize %}
 {% include 'includes/_navbar.html' %}
 <link rel="stylesheet" href="{% static 'css/abiye.css' %}" />
 
 {% block content %}
-  <!-- Boş sepet gösterimi -->
   <div class="container">
     <div class="row">
-      {% for sepet in sepets %}
-        <div class="col-md-12" id="basket-container">
-          <h3>Sepetinizde ürün bulunmamaktadır.</h3>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-{% endblock %}
-
-{% block content1 %}
-  <div class="container">
-    <div class="row">
-      {% for erkekurun in erkekurunler %}
-        <div class="col-md-4">
-          <div class="yeni-yapi">
-            <img class="img" src="{{ erkekurun.image_url }}" alt="Ürün Görseli" />
-            <div class="content">
-              <div class="product-info">
-                <h2 class="product-name">{{ erkekurun.name }}</h2>
-                <h4 class="price">{{ erkekurun.price }}</h4>
-              </div>
-              <hr />
-              <div class="actions">
-                <button class="fav-btn"><i class="fa-solid fa-heart" style="color: #B197FC;"></i></button>
-                <button class="cart-btn" onclick="addToCart('{{ erkekurun.name }}', '{{ erkekurun.price }}', '{{ erkekurun.image_url }}')">Sepete Ekle</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
+      <div class="col-md-12" id="basket-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Ürün Resmi</th> <!-- Yeni sütun ekledik -->
+              <th scope="col">Ürün Adı</th>
+              <th scope="col">Fiyat</th>
+              <th scope="col">Beden</th>
+              <th scope="col">Miktar</th>
+              <th scope="col">Toplam Fiyat</th>
+              <th scope="col">Sil</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cart_item in sepet_urunler %}
+              <tr>
+                <td>
+                  <img src="{{ cart_item.product.image_url }}" width="100" />
+                </td> <!-- Ürün resmini görüntüledik -->
+                <td>{{ cart_item.product.name }}</td>
+                <td>{{ cart_item.product.price }}</td>
+                <td>{{ cart_item.size }}</td>
+                <td>{{ cart_item.quantity }}</td>
+                <td>{{ cart_item.product.price|floatformat:2|intcomma }}</td>
+                <td>
+                  <a href="{% url 'sepet_sil' cart_item.id %}" class="btn btn-danger btn-sm">Sil</a>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="7">
+                  <h3>Sepetinizde ürün bulunmamaktadır.</h3>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 {% endblock %}

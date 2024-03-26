@@ -10,20 +10,20 @@
                 <h2 class="product-name">{{ erkekurun.name }}</h2>
                 <h4 class="price">{{ erkekurun.price }}₺</h4>
               </div>
+
               <hr />
-              <div class="actions">
-                <button class="fav-btn" id="heart" onclick="addToFavorites()"><i class="fa-solid fa-heart" style="color: #B197FC;"></i></button>
-                <button class="cart-btn"><i class="fa-solid fa-cart-shopping" style="color: #74C0FC;"></i></button>
-                <button class="delete-btn"><i class="fa-solid fa-trash" style="color: #63E6BE;"></i></button>
-              </div>
-              <hr />
-              <div>
-                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ erkekurun.name }}, {{ erkekurun.price }},{{ erkekurun.image_url }}, 'S')">S</button>
-                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ erkekurun.name }}, {{ erkekurun.price }},{{ erkekurun.image_url }}, 'M')">M</button>
-                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ erkekurun.name }}, {{ erkekurun.price }},{{ erkekurun.image_url }}, 'L')">L</button>
-                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ erkekurun.name }}, {{ erkekurun.price }},{{ erkekurun.image_url }}, 'XL')">XL</button>
-                <button class="btn btn-dark mt-2 size-btn" onclick="selectSize({{ erkekurun.name }}, {{ erkekurun.price }},{{ erkekurun.image_url }}, 'XXL')">XXL</button>
-              </div>
+              <form action="{% url 'add_to_cart' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="urun_adi" value="{{ erkekurun.name }}" />
+                <input type="hidden" name="urun_fiyati" value="{{ erkekurun.price }}" />
+                <input type="hidden" name="urun_resmi" value="{{ erkekurun.image_url }}" />
+                <button type="submit" name="beden" value="XS" class="btn btn-dark mt-2 size-btn">XS</button>
+                <button type="submit" name="beden" value="S" class="btn btn-dark mt-2 size-btn">S</button>
+                <button type="submit" name="beden" value="M" class="btn btn-dark mt-2 size-btn">M</button>
+                <button type="submit" name="beden" value="L" class="btn btn-dark mt-2 size-btn">L</button>
+                <button type="submit" name="beden" value="XL" class="btn btn-dark mt-2 size-btn">XL</button>
+                <button type="submit" name="beden" value="XXL" class="btn btn-dark mt-2 size-btn">XXL</button>
+              </form>
             </div>
           </div>
         </div>

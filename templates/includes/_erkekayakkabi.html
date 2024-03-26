@@ -10,23 +10,20 @@
                 <h2 class="product-name">{{ eayakkabi.name }}</h2>
                 <h4 class="price">{{ eayakkabi.price }}₺</h4>
               </div>
+
               <hr />
-              <div class="actions">
-                <button class="fav-btn"><i class="fa-solid fa-heart" style="color: #B197FC;"></i></button>
-                <button class="cart-btn"><i class="fa-solid fa-cart-shopping" style="color: #74C0FC;"></i></button>
-                <button class="delete-btn"><i class="fa-solid fa-trash" style="color: #63E6BE;"></i></button>
-              </div>
-              <hr />
-              <div class="selectSize-option">
-                <button class="btn btn-primary mt-2 size-btn" onclick="selectSize({{ eayakkabi.name }}, {{ eayakkabi.price }}, {{ eayakkabi.image_url }}, '38')">38</button>
-                <button class="btn btn-primary mt-2 size-btn" onclick="selectSize({{ eayakkabi.name }}, {{ eayakkabi.price }}, {{ eayakkabi.image_url }}, '39')">39</button>
-                <button class="btn btn-primary mt-2 size-btn" onclick="selectSize({{ eayakkabi.name }}, {{ eayakkabi.price }}, {{ eayakkabi.image_url }}, '40')">40</button>
-                <button class="btn btn-primary mt-2 size-btn" onclick="selectSize({{ eayakkabi.name }}, {{ eayakkabi.price }}, {{ eayakkabi.image_url }}, '41')">41</button>
-                <button class="btn btn-primary mt-2 size-btn" onclick="selectSize({{ eayakkabi.name }}, {{ eayakkabi.price }}, {{ eayakkabi.image_url }}, '42')">42</button>
-                <button class="btn btn-primary mt-2 size-btn" onclick="selectSize({{ eayakkabi.name }}, {{ eayakkabi.price }}, {{ eayakkabi.image_url }}, '43')">43</button>
-                <button class="btn btn-primary mt-2 size-btn" onclick="selectSize({{ eayakkabi.name }}, {{ eayakkabi.price }}, {{ eayakkabi.image_url }}, '44')">44</button>
-                <button class="btn btn-primary mt-2 size-btn" onclick="selectSize({{ eayakkabi.name }}, {{ eayakkabi.price }}, {{ eayakkabi.image_url }}, '45')">45</button>
-              </div>
+              <form action="{% url 'add_to_cart' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="urun_adi" value="{{ eayakkabi.name }}" />
+                <input type="hidden" name="urun_fiyati" value="{{ eayakkabi.price }}" />
+                <input type="hidden" name="urun_resmi" value="{{ eayakkabi.image_url }}" />
+                <button type="submit" name="beden" value="39" class="btn btn-danger mt-2 size-btn">39</button>
+                <button type="submit" name="beden" value="40" class="btn btn-danger mt-2 size-btn">40</button>
+                <button type="submit" name="beden" value="41" class="btn btn-danger mt-2 size-btn">41</button>
+                <button type="submit" name="beden" value="43" class="btn btn-danger mt-2 size-btn">43</button>
+                <button type="submit" name="beden" value="44" class="btn btn-danger mt-2 size-btn">44</button>
+                <button type="submit" name="beden" value="45" class="btn btn-danger mt-2 size-btn">45</button>
+              </form>
             </div>
           </div>
         </div>

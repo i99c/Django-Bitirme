@@ -1,20 +1,23 @@
 {% block content %}
   <div class="container">
     <div class="row">
-      {% for urun in sepet_urunler %}
+      {% for urun in uruns %}
         <div class="col-md-4">
           <div class="sepet-urun">
             <img class="img" src="{{ urun.image_url }}" alt="Ürün Görseli" />
             <div class="content">
               <div class="product-info">
                 <h2 class="product-name">{{ urun.name }}</h2>
-                <h4 class="price">{{ urun.price }}</h4>
+                <h4 class="price">{{ urun.price }}₺</h4>
               </div>
               <hr />
-              <div class="actions">
-                <button class="remove-btn"><i class="fa-solid fa-trash" style="color: #63E6BE;"></i></button>
-                <input type="number" class="quantity-input" value="{{ urun.quantity }}" />
-              </div>
+              <form action="{% url 'add_to_cart' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="urun_adi" value="{{ urun.name }}" />
+                <input type="hidden" name="urun_fiyati" value="{{ urun.price }}" />
+                <input type="hidden" name="urun_resmi" value="{{ urun.image_url }}" />
+                <button type="submit" name="beden" value="STD" class="btn btn-dark mt-2 size-btn">STD</button>
+              </form>
             </div>
           </div>
         </div>

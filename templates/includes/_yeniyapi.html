@@ -1,19 +1,23 @@
 {% block content %}
   <div class="container">
     <div class="row">
-      {% for product in products %}
+      {% for kozmetik in kozmetiks %}
         <div class="col-md-6">
           <div class="yeni-yapi">
-            <img class="img" src="{{ product.image_url }}" alt="Ürün Görseli" style="width: 100%; height: auto; max-width: 450px; max-height: 450px;" />
+            <img class="img" src="{{ kozmetik.image_url }}" alt="Ürün Görseli" style="width: 100%; height: auto; max-width: 450px; max-height: 450px;" />
             <div class="content">
               <div class="product-info">
-                <h2 class="product-name">{{ product.name }}</h2>
-                <h4 class="price">{{ product.price }}</h4>
+                <h2 class="product-name">{{ kozmetik.name }}</h2>
+                <h4 class="price">{{ kozmetik.price }}₺</h4>
               </div>
               <hr />
-              <div class="actions">
-                <button class="fav-btn"><i class="fa-solid fa-heart" style="color: #B197FC;"></i></button>
-              </div>
+              <form action="{% url 'add_to_cart' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="urun_adi" value="{{ kozmetik.name }}" />
+                <input type="hidden" name="urun_fiyati" value="{{ kozmetik.price }}" />
+                <input type="hidden" name="urun_resmi" value="{{ kozmetik.image_url }}" />
+                <button type="submit" name="beden" value="STD" class="btn btn-dark mt-2 size-btn">STD</button>
+              </form>
             </div>
           </div>
         </div>
