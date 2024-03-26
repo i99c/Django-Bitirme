@@ -1,3 +1,7 @@
+Proje Canlı Link:  ipek.pythonanywhere.com
+
+
+
 Proje Ana Sayfa Görüntüsü
 
 
